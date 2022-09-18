@@ -25,3 +25,8 @@ dist-ssr
 
 # gcp
 gcp
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules
