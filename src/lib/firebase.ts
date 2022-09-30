@@ -1,4 +1,28 @@
 import { initializeApp } from "firebase/app";
+import {
+  Timestamp,
+  DocumentData,
+  QueryDocumentSnapshot,
+  SnapshotOptions,
+  FirestoreDataConverter,
+  PartialWithFieldValue,
+} from "firebase/firestore";
+import { omit } from "lodash-es";
+
+type WithId<T> = T & { id: string };
+
+const getConverter = <T>(): FirestoreDataConverter<WithId<T>> => ({
+  toFirestore: (data: PartialWithFieldValue<WithId<T>>): DocumentData => {
+    return omit(data, ["id"]);
+  },
+  // FIXME: WithId がないと型エラーになるが、これではおかしい
+  fromFirestore: (
+    snapshot: QueryDocumentSnapshot<WithId<T>>,
+    options: SnapshotOptions
+  ): WithId<T> => {
+    return { ...snapshot.data(options), id: snapshot.id };
+  },
+});
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -9,3 +33,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 initializeApp(firebaseConfig);
+
+export type { Timestamp, WithId };
+export { getConverter };
