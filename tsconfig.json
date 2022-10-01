@@ -20,6 +20,7 @@
       "~/*": ["*"]
     }
   },
-  "include": ["src", "test"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "tests"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "types": ["vitest/globals"]
 }

@@ -29,5 +29,7 @@ gcp
 firebase.json
 firestore.indexes.json
 firestore.rules
+.firebase/*
 storage.rules
 deploy.sh
+.envrc
