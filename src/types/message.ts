@@ -4,6 +4,7 @@ type MessageDocumentData = {
   createdAt: Timestamp;
   content: string;
   senderId: string;
+  imagePath: string | null;
 };
 
 type Message = WithId<MessageDocumentData>;

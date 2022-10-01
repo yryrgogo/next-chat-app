@@ -6,6 +6,7 @@ const messageFactory = Factory.define<Message>(({ sequence }) => ({
   id: sequence.toString(),
   createdAt: Timestamp.fromDate(new Date()),
   content: "",
+  imagePath: null,
   senderId: "",
 }));
 

@@ -6,14 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "emulators:start:firestore": "firebase emulators:start --only firestore"
   },
   "dependencies": {
     "firebase": "^9.10.0",
     "lodash-es": "^4.17.21",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "vite-tsconfig-paths": "^3.5.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "^2.0.4",
@@ -31,9 +32,11 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.8",
     "fishery": "^2.2.2",
+    "jsdom": "^20.0.0",
     "prettier": "^2.7.1",
     "typescript": "*",
     "vite": "^3.1.0",
-    "vitest": "^0.23.4"
+    "vitest": "^0.23.4",
+    "vite-tsconfig-paths": "^3.5.0"
   }
 }

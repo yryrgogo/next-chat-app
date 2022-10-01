@@ -24,6 +24,15 @@ const getConverter = <T>(): FirestoreDataConverter<WithId<T>> => ({
   },
 });
 
+type Collection = "users" | "messages";
+const getFirestorePathMap = (): Record<Collection, string> => {
+  const prefix = "/chat/v1";
+  return {
+    users: `${prefix}/users`,
+    messages: `${prefix}/messages`,
+  };
+};
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -35,4 +44,4 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 export type { Timestamp, WithId };
-export { getConverter };
+export { getConverter, getFirestorePathMap };
